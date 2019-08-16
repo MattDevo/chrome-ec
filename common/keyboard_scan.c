@@ -119,6 +119,7 @@ void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 	} else if (disable_scanning_mask && !old_disable_scanning) {
 		keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
 		keyboard_clear_buffer();
+		clear_typematic_key();
 	}
 }
 
