@@ -318,7 +318,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	ASSERT(scan_code);
 	ASSERT(len);
 
-	if (row > KEYBOARD_ROWS || col > KEYBOARD_COLS)
+	if (row >= KEYBOARD_ROWS || col >= KEYBOARD_COLS)
 		return EC_ERROR_INVAL;
 
 	if (pressed)
@@ -406,7 +406,7 @@ static void set_typematic_key(const uint8_t *scan_code, int32_t len)
 	typematic_len = len;
 }
 
-static void clear_typematic_key(void)
+void clear_typematic_key(void)
 {
 	typematic_len = 0;
 }
