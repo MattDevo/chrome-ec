@@ -43,6 +43,7 @@ CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(CFLAGS_TEST) \
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CFLAGS_WARN) $(CFLAGS_y)
 CFLAGS+= -ffunction-sections -fshort-wchar
 CFLAGS+= -fno-delete-null-pointer-checks -fconserve-stack
+CFLAGS+= -std=gnu89
 
 FTDIVERSION=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
 ifneq ($(FTDIVERSION),)

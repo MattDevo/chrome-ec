@@ -139,7 +139,7 @@ static const struct console_command *find_command(char *name)
 }
 
 
-static const char const *errmsgs[] = {
+static const char *const errmsgs[] = {
 	"OK",
 	"Unknown error",
 	"Unimplemented",

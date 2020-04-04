@@ -13,7 +13,7 @@ enum als_id;
 
 /* Initialized in board.c */
 struct als_t {
-	const char const *name;
+	const char *const name;
 	int (*read)(int *lux, int af);
 	int attenuation_factor;
 };

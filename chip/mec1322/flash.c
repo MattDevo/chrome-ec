@@ -225,6 +225,7 @@ int flash_physical_protect_at_boot(enum flash_wp_range range)
 		entire_flash_locked = 1;
 		/* Fallthrough */
 	case FLASH_WP_RO:
+    default: // Default case shouldn't happen, but just in case
 		offset = CONFIG_FLASH_BASE_SPI + CONFIG_WP_OFF;
 		size = CONFIG_WP_SIZE;
 		flashwp = SPI_WP_HARDWARE;
