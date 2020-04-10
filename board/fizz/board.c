@@ -162,14 +162,8 @@ const struct fan_conf fan_conf_0 = {
 };
 
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2200,
-	.rpm_start = 2200,
-	.rpm_max = 5600,
-};
-
-const struct fan_rpm fan_rpm_1 = {
-	.rpm_min = 2800,
-	.rpm_start = 2800,
+	.rpm_min = 1500,
+	.rpm_start = 1500,
 	.rpm_max = 5600,
 };
 
@@ -614,8 +608,9 @@ static const struct fan_step *fan_table;
 
 /* Note: Do not make the fan on/off point equal to 0 or 100 */
 static const struct fan_step fan_table0[] = {
-	{.on =  0, .off =  1, .rpm = 0},
-	{.on = 36, .off =  1, .rpm = 2800},
+	{.on =  0, .off = 1, .rpm = 0},
+	{.on = 35, .off = 30, .rpm = 1500},
+	{.on = 46, .off = 42, .rpm = 2800},
 	{.on = 58, .off = 58, .rpm = 3200},
 	{.on = 66, .off = 61, .rpm = 3400},
 	{.on = 75, .off = 69, .rpm = 4200},
@@ -624,8 +619,9 @@ static const struct fan_step fan_table0[] = {
 	{.on = 98, .off = 91, .rpm = 5600},
 };
 static const struct fan_step fan_table1[] = {
-	{.on =  0, .off =  1, .rpm = 0},
-	{.on = 36, .off =  1, .rpm = 2800},
+	{.on =  0, .off = 1, .rpm = 0},
+	{.on = 35, .off = 30, .rpm = 1500},
+	{.on = 46, .off = 42, .rpm = 2800},
 	{.on = 62, .off = 58, .rpm = 3200},
 	{.on = 68, .off = 63, .rpm = 3400},
 	{.on = 75, .off = 69, .rpm = 4200},
@@ -634,9 +630,10 @@ static const struct fan_step fan_table1[] = {
 	{.on = 98, .off = 91, .rpm = 5600},
 };
 static const struct fan_step fan_table2[] = {
-	{.on =  0, .off =  1, .rpm = 0},
-	{.on = 36, .off =  1, .rpm = 2200},
-	{.on = 63, .off = 56, .rpm = 2900},
+	{.on =  0, .off = 1, .rpm = 0},
+	{.on = 35, .off = 30, .rpm = 1500},
+	{.on = 46, .off = 42, .rpm = 2500},
+	{.on = 54, .off = 49, .rpm = 2750},
 	{.on = 69, .off = 65, .rpm = 3000},
 	{.on = 75, .off = 70, .rpm = 3300},
 	{.on = 80, .off = 76, .rpm = 3600},
@@ -644,8 +641,9 @@ static const struct fan_step fan_table2[] = {
 	{.on = 98, .off = 91, .rpm = 5000},
 };
 static const struct fan_step fan_table3[] = {
-	{.on =  0, .off =  1, .rpm = 0},
-	{.on = 36, .off = 22, .rpm = 2500},
+	{.on =  0, .off = 1, .rpm = 0},
+	{.on = 35, .off = 30, .rpm = 1500},
+	{.on = 46, .off = 42, .rpm = 2800},
 	{.on = 54, .off = 49, .rpm = 3200},
 	{.on = 61, .off = 56, .rpm = 3500},
 	{.on = 68, .off = 63, .rpm = 3900},
@@ -667,11 +665,11 @@ static void setup_fan(void)
 	case OEM_TEEMO:
 	case OEM_BLEEMO:
 	default:
-		fans[FAN_CH_0].rpm = &fan_rpm_1;
+		fans[FAN_CH_0].rpm = &fan_rpm_0;
 		fan_table = fan_table0;
 		break;
 	case OEM_SION:
-		fans[FAN_CH_0].rpm = &fan_rpm_1;
+		fans[FAN_CH_0].rpm = &fan_rpm_0;
 		fan_table = fan_table1;
 		break;
 	case OEM_WUKONG_N:
