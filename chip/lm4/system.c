@@ -277,7 +277,14 @@ static void hibernate(uint32_t seconds, uint32_t microseconds, uint32_t flags)
 	LM4_HIBERNATE_HIBRTCSS = rtcss << 16;
 
 	wait_for_hibctl_wc();
-	__enter_hibernate(hibctl | LM4_HIBCTL_HIBREQ);
+
+	if (system_get_board_version() == BOARD_VERSION_PROTO1) {
+		/* Need VDD3ON because we can't drop VDD externally */
+		__enter_hibernate(0x15B);
+	} else {
+		/* EVT+ can drop VDD */
+		__enter_hibernate(hibctl | LM4_HIBCTL_HIBREQ);
+	}
 }
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
