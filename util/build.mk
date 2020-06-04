@@ -6,7 +6,7 @@
 # Host tools build
 #
 
-host-util-bin=
+host-util-bin= ectool burn_my_ec
 ifeq ($(CONFIG_LPC),y)
 host-util-common=comm-lpc
 else
